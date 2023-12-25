@@ -684,8 +684,13 @@ que sejam necessárias.
 \subsection*{Problema 1}
 
 \begin{code}
-matrot:: Eq a => [[a]] -> [a]
-matrot= undefined
+matrot :: Eq a => [[a]] -> [a]
+matrot [] = []
+matrot (h:t) = h ++ lasts t ++ matrot (deepreverse (myinits t))
+    where 
+        lasts = cataList (either nil (cons . (last >< id)))
+        myinits = cataList (either nil (cons . (init >< id)))
+        deepreverse = reverse . cataList (either nil (cons . (reverse >< id)))
 \end{code}
 
 \subsection*{Problema 2}

@@ -1,47 +1,59 @@
 \begin{theindex}
 
-  \item \LaTeX  , \hyperpage{3, 4}
-    \subitem \texttt  {bibtex}, \hyperpage{4}
-    \subitem \texttt  {lhs2TeX}, \hyperpage{3--5}
-    \subitem \texttt  {makeindex}, \hyperpage{4}
-    \subitem \texttt  {pdflatex}, \hyperpage{3}
-    \subitem \texttt  {xymatrix}, \hyperpage{5}
+  \item \LaTeX  , \hyperpage{4, 5}
+    \subitem \texttt  {bibtex}, \hyperpage{5}
+    \subitem \texttt  {lhs2TeX}, \hyperpage{4--6}
+    \subitem \texttt  {makeindex}, \hyperpage{5}
+    \subitem \texttt  {pdflatex}, \hyperpage{4}
+    \subitem \texttt  {xymatrix}, \hyperpage{6}
 
   \indexspace
 
   \item Combinador ``pointfree''
     \subitem \emph  {cata}
-      \subsubitem Naturais, \hyperpage{5}
+      \subsubitem Naturais, \hyperpage{6}
     \subitem \emph  {either}, \hyperpage{1}
-    \subitem \emph  {split}, \hyperpage{1}, \hyperpage{5}
-  \item Cálculo de Programas, \hyperpage{1}, \hyperpage{3}
-    \subitem Material Pedagógico, \hyperpage{3}
+    \subitem \emph  {split}, \hyperpage{1}, \hyperpage{6}
+  \item Cálculo de Programas, \hyperpage{1, 2}, \hyperpage{4}, 
+		\hyperpage{6}
+    \subitem Material Pedagógico, \hyperpage{4}
 
   \indexspace
 
-  \item Docker, \hyperpage{3}
-    \subitem container, \hyperpage{3, 4}
+  \item Docker, \hyperpage{4}
+    \subitem container, \hyperpage{4, 5}
 
   \indexspace
 
+  \item Functor, \hyperpage{3}, \hyperpage{6--9}
   \item Função
-    \subitem $\pi _1$, \hyperpage{5}
-    \subitem $\pi _2$, \hyperpage{5}
+    \subitem $\pi _1$, \hyperpage{6, 7}
+    \subitem $\pi _2$, \hyperpage{6}
+    \subitem \emph  {for}, \hyperpage{6, 7}, \hyperpage{10}
 
   \indexspace
 
-  \item Haskell, \hyperpage{1}, \hyperpage{3, 4}
+  \item Haskell, \hyperpage{1}, \hyperpage{4, 5}
+    \subitem Biblioteca
+      \subsubitem PFP, \hyperpage{8}
+      \subsubitem Probability, \hyperpage{7, 8}
     \subitem interpretador
-      \subsubitem GHCi, \hyperpage{3, 4}
-    \subitem Literate Haskell, \hyperpage{3}
+      \subsubitem GHCi, \hyperpage{4, 5}, \hyperpage{7}
+    \subitem Literate Haskell, \hyperpage{4}
 
   \indexspace
 
-  \item Números naturais ($\mathbb  {N}$), \hyperpage{5}
+  \item Números naturais ($\mathbb  {N}$), \hyperpage{6, 7}
 
   \indexspace
 
   \item Programação
-    \subitem literária, \hyperpage{3, 4}
+    \subitem dinâmica, \hyperpage{2}, \hyperpage{6}
+    \subitem literária, \hyperpage{4}, \hyperpage{6}
+
+  \indexspace
+
+  \item Taylor series
+    \subitem Maclaurin series, \hyperpage{2}
 
 \end{theindex}

@@ -894,10 +894,26 @@ que sejam necessárias.
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{5}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{9}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
 \>[B]{}\Varid{matrot}\mathbin{::}\Conid{Eq}\;\Varid{a}\Rightarrow [\mskip1.5mu [\mskip1.5mu \Varid{a}\mskip1.5mu]\mskip1.5mu]\to [\mskip1.5mu \Varid{a}\mskip1.5mu]{}\<[E]%
 \\
-\>[B]{}\Varid{matrot}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{matrot}\;[\mskip1.5mu \mskip1.5mu]\mathrel{=}[\mskip1.5mu \mskip1.5mu]{}\<[E]%
+\\
+\>[B]{}\Varid{matrot}\;(\Varid{h}\mathbin{:}\Varid{t})\mathrel{=}\Varid{h}\mathbin{+\!\!+}\Varid{lasts}\;\Varid{t}\mathbin{+\!\!+}\Varid{matrot}\;(\Varid{deepreverse}\;(\Varid{myinits}\;\Varid{t})){}\<[E]%
+\\
+\>[B]{}\hsindent{5}{}\<[5]%
+\>[5]{}\mathbf{where}{}\<[E]%
+\\
+\>[5]{}\hsindent{4}{}\<[9]%
+\>[9]{}\Varid{lasts}\mathrel{=}\llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{last}\times\Varid{id})}\,\rrparenthesis{}\<[E]%
+\\
+\>[5]{}\hsindent{4}{}\<[9]%
+\>[9]{}\Varid{myinits}\mathrel{=}\llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{init}\times\Varid{id})}\,\rrparenthesis{}\<[E]%
+\\
+\>[5]{}\hsindent{4}{}\<[9]%
+\>[9]{}\Varid{deepreverse}\mathrel{=}\Varid{reverse}\comp \llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{reverse}\times\Varid{id})}\,\rrparenthesis{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 

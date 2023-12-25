@@ -1,5 +1,10 @@
 \begin{thebibliography}{1}
 
+\bibitem{EK06}
+M.~Erwig and S.~Kollmansberger.
+\newblock Functional pearls: Probabilistic functional programming in haskell.
+\newblock {\em J. Funct. Program.}, 16:21--34, January 2006.
+
 \bibitem{Kn92}
 D.E. Knuth.
 \newblock {\em Literate Programming}.
