@@ -23,10 +23,21 @@ reverseVowels = reverseByPredicate isVowel
 backwardsPredicate :: (a -> Bool) -> [a] -> [a]
 backwardsPredicate p = reverse . filter p
 
+aux :: (a -> Bool) -> [a] -> [a] -> [a]
+aux p l [] = l
+aux p (h:t) (x:xs) = if p x then h : aux p t xs else x : aux p (h:t) xs
 
-aux :: (a -> Bool) -> ([a],[a]) -> [a]
-aux p = Cp.cond (p (head . p1)) (cons . split (head . p2) (aux p . (tail >< tail))) (aux p . (tail >< id))
-
+trocaVogais :: String -> String
+trocaVogais [] = []
+trocaVogais [a] = [a]
+trocaVogais (head:tail)
+    | isVowel head && isVowel lastt = lastt : trocaVogais mid ++ [head]
+    | isVowel head && not(isVowel lastt) = trocaVogais (head:mid) ++ [lastt]
+    | not(isVowel head) && isVowel lastt = head : trocaVogais (mid ++ [lastt])
+    | otherwise = head : trocaVogais mid ++ [lastt]
+    where 
+        mid = init tail
+        lastt = last tail
 
 reverseByPredicate :: (a -> Bool) -> [a] -> [a]
-reverseByPredicate p = aux p . split id (backwardsPredicate p)
+reverseByPredicate p l = aux p (backwardsPredicate p l) l
