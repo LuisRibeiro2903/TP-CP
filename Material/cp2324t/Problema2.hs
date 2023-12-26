@@ -19,14 +19,14 @@ isVowel = (`elem` "aáàãâeéèêiíìîoóòõôuúùûAÁÀÃÂEÉÈÊIÍÌ�
 reverseVowels :: String -> String
 reverseVowels = reverseByPredicate isVowel
 
-asd :: String -> String
-asd [] = []
-asd (h:t) = if isVowel h then [] else h : asd t
-
-
 
 backwardsPredicate :: (a -> Bool) -> [a] -> [a]
 backwardsPredicate p = reverse . filter p
 
+
+aux :: (a -> Bool) -> ([a],[a]) -> [a]
+aux p = Cp.cond (p (head . p1)) (cons . split (head . p2) (aux p . (tail >< tail))) (aux p . (tail >< id))
+
+
 reverseByPredicate :: (a -> Bool) -> [a] -> [a]
-reverseByPredicate p = undefined
+reverseByPredicate p = aux p . split id (backwardsPredicate p)
