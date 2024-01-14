@@ -941,14 +941,14 @@ que sejam necessárias.
 \>[B]{}\Varid{snh}\;\Varid{x}\mathrel{=}\Varid{wrapper}\comp \Varid{worker}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{9}{}\<[9]%
-\>[9]{}\Varid{worker}\mathrel{=}\for{(\Varid{loop}\;\Varid{x})}\ {(\Varid{start}\;\Varid{x})}{}\<[E]%
+\>[9]{}\Varid{worker}\mathrel{=}\for{\Varid{loop}\;\Varid{x}}\ {\Varid{start}\;\Varid{x}}{}\<[E]%
 \\
 \>[B]{}\hsindent{9}{}\<[9]%
-\>[9]{}\Varid{wrapper}\mathrel{=}\bot {}\<[E]%
+\>[9]{}\Varid{wrapper}\;(\Varid{a},\anonymous ,\anonymous ,\anonymous )\mathrel{=}\Varid{a}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{loop}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{loop}\;\Varid{x}\;(\Varid{snh'},\Varid{h},\Varid{f},\Varid{g})\mathrel{=}(\Varid{snh'}\mathbin{+}\Varid{h},\Varid{h}\mathbin{*}(\Varid{x}\mathbin{**}\mathrm{2}\mathbin{/}\Varid{f}),\Varid{f}\mathbin{+}\Varid{g},\Varid{g}\mathbin{+}\mathrm{8}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{start}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{start}\;\Varid{x}\mathrel{=}(\Varid{x},\Varid{x}\mathbin{**}\mathrm{3}\mathbin{/}\mathrm{6},\mathrm{20},\mathrm{22}){}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 

@@ -708,12 +708,12 @@ reverseByPredicate p = undefined
 \begin{code}
 
 snh x = wrapper . worker where
-        worker = for ((loop x)) ((start x))
-        wrapper = undefined
+        worker = for (loop x) (start x)
+        wrapper (a, _, _, _) = a
 
-loop = undefined
+loop x (snh', h, f, g) = (snh' + h, h * (x **2 / f), f + g, g + 8)
 
-start = undefined
+start x = (x, x**3 / 6, 20, 22)
 
 \end{code}
 
