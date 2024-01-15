@@ -24,20 +24,17 @@ backwardsPredicate :: (a -> Bool) -> [a] -> [a]
 backwardsPredicate p = reverse . filter p
 
 aux :: (a -> Bool) -> [a] -> [a] -> [a]
-aux p l [] = l
+aux p [] l = l
 aux p (h:t) (x:xs) = if p x then h : aux p t xs else x : aux p (h:t) xs
 
-trocaVogais :: String -> String
-trocaVogais [] = []
-trocaVogais [a] = [a]
-trocaVogais (head:tail)
-    | isVowel head && isVowel lastt = lastt : trocaVogais mid ++ [head]
-    | isVowel head && not(isVowel lastt) = trocaVogais (head:mid) ++ [lastt]
-    | not(isVowel head) && isVowel lastt = head : trocaVogais (mid ++ [lastt])
-    | otherwise = head : trocaVogais mid ++ [lastt]
-    where 
-        mid = init tail
-        lastt = last tail
+outPredicateList :: (a -> Bool) -> ([a], [a]) -> Either [a] (a, ([a], [a]))
+outPredicateList p ([], l) = i1 l
+outPredicateList p (y:ys, x:xs) =
+    if p x then i2 (y, (ys, xs)) else i2 (x, (y:ys, xs))
+
+cataPredicateList p g = g . recList (cataPredicateList p g) . outPredicateList p
 
 reverseByPredicate :: (a -> Bool) -> [a] -> [a]
-reverseByPredicate p l = aux p (backwardsPredicate p l) l
+reverseByPredicate p = cataPredicateList p gene . split (backwardsPredicate p) id
+    where
+        gene = either id cons

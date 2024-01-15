@@ -921,14 +921,37 @@ que sejam necessárias.
 
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{5}{@{}>{\hspre}l<{\hspost}@{}}%
+\column{9}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
+\>[B]{}\Varid{isVowel}\mathbin{::}\Conid{Char}\to \Conid{Bool}{}\<[E]%
+\\
+\>[B]{}\Varid{isVowel}\mathrel{=}(\in \text{\ttfamily \char34 aáàãâeéèêiíìîoóòõôuúùûAÁÀÃÂEÉÈÊIÍÌÎOÓÒÕÔUÚÙÛ\char34}){}\<[E]%
+\\[\blanklineskip]%
 \>[B]{}\Varid{reverseVowels}\mathbin{::}\Conid{String}\to \Conid{String}{}\<[E]%
 \\
-\>[B]{}\Varid{reverseVowels}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{reverseVowels}\mathrel{=}\Varid{reverseByPredicate}\;\Varid{isVowel}{}\<[E]%
+\\[\blanklineskip]%
+\>[B]{}\Varid{outPredicateList}\mathbin{::}(\Varid{a}\to \Conid{Bool})\to ([\mskip1.5mu \Varid{a}\mskip1.5mu],[\mskip1.5mu \Varid{a}\mskip1.5mu])\to [\mskip1.5mu \Varid{a}\mskip1.5mu]+(\Varid{a},([\mskip1.5mu \Varid{a}\mskip1.5mu],[\mskip1.5mu \Varid{a}\mskip1.5mu])){}\<[E]%
+\\
+\>[B]{}\Varid{outPredicateList}\;\Varid{p}\;([\mskip1.5mu \mskip1.5mu],\Varid{l})\mathrel{=}i_1\;\Varid{l}{}\<[E]%
+\\
+\>[B]{}\Varid{outPredicateList}\;\Varid{p}\;(\Varid{y}\mathbin{:}\Varid{ys},\Varid{x}\mathbin{:}\Varid{xs})\mathrel{=}{}\<[E]%
+\\
+\>[B]{}\hsindent{5}{}\<[5]%
+\>[5]{}\mathbf{if}\;\Varid{p}\;\Varid{x}\;\mathbf{then}\;i_2\;(\Varid{y},(\Varid{ys},\Varid{xs}))\;\mathbf{else}\;i_2\;(\Varid{x},(\Varid{y}\mathbin{:}\Varid{ys},\Varid{xs})){}\<[E]%
+\\[\blanklineskip]%
+\>[B]{}\Varid{cataPredicateList}\;\Varid{p}\;\Varid{g}\mathrel{=}\Varid{g}\comp \Varid{recList}\;(\Varid{cataPredicateList}\;\Varid{p}\;\Varid{g})\comp \Varid{outPredicateList}\;\Varid{p}{}\<[E]%
 \\[\blanklineskip]%
 \>[B]{}\Varid{reverseByPredicate}\mathbin{::}(\Varid{a}\to \Conid{Bool})\to [\mskip1.5mu \Varid{a}\mskip1.5mu]\to [\mskip1.5mu \Varid{a}\mskip1.5mu]{}\<[E]%
 \\
-\>[B]{}\Varid{reverseByPredicate}\;\Varid{p}\mathrel{=}\bot {}\<[E]%
+\>[B]{}\Varid{reverseByPredicate}\;\Varid{p}\mathrel{=}\Varid{cataPredicateList}\;\Varid{p}\;\Varid{gene}\comp \conj{\Varid{reverse}\comp \Varid{filter}\;\Varid{p}}{\Varid{id}}{}\<[E]%
+\\
+\>[B]{}\hsindent{5}{}\<[5]%
+\>[5]{}\mathbf{where}{}\<[E]%
+\\
+\>[5]{}\hsindent{4}{}\<[9]%
+\>[9]{}\Varid{gene}\mathrel{=}\alt{\Varid{id}}{\Varid{cons}}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks
 
@@ -961,8 +984,6 @@ que sejam necessárias.
 \column{7}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{9}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{E}{@{}>{\hspre}l<{\hspost}@{}}%
-\>[B]{}\Varid{db}\mathbin{::}[\mskip1.5mu (\Conid{Segment},\fun{Dist}\;\Conid{Delay})\mskip1.5mu]{}\<[E]%
-\\
 \>[B]{}\Varid{db}\mathrel{=}\Varid{f}\;\Varid{dados}\;\mathbf{where}{}\<[E]%
 \\
 \>[B]{}\hsindent{5}{}\<[5]%
@@ -987,12 +1008,8 @@ que sejam necessárias.
 \>[B]{}\hsindent{3}{}\<[3]%
 \>[3]{}\mathbf{in}\;\Varid{contagem}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{mkdist}\mathbin{::}\Conid{Eq}\;\Varid{a}\Rightarrow [\mskip1.5mu \Varid{a}\mskip1.5mu]\to \fun{Dist}\;\Varid{a}{}\<[E]%
-\\
 \>[B]{}\Varid{mkdist}\mathrel{=}\Varid{mkD}\comp \Varid{calcularDistribuicaoProbabilidades}{}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{delay}\mathbin{::}\Conid{Segment}\to \fun{Dist}\;\Conid{Delay}{}\<[E]%
-\\
 \>[B]{}\Varid{delay}\;\Varid{seg}\mathrel{=}{}\<[E]%
 \\
 \>[B]{}\hsindent{5}{}\<[5]%
@@ -1027,8 +1044,6 @@ que sejam necessárias.
 \>[B]{}\hsindent{5}{}\<[5]%
 \>[5]{}\Varid{return}\;(\Varid{x}\mathbin{+}\Varid{y}){}\<[E]%
 \\[\blanklineskip]%
-\>[B]{}\Varid{pdelay}\mathbin{::}\Conid{Stop}\to \Conid{Stop}\to \fun{Dist}\;\Conid{Delay}{}\<[E]%
-\\
 \>[B]{}\Varid{pdelay}\;\Varid{s1}\;\Varid{s2}\mathrel{=}\Varid{foldr1}\;\Varid{distAccum}\mathbin{\$}\map \;\Varid{delay}\mathbin{\$}\Varid{caminho}\;\Varid{s1}\;\Varid{s2}{}\<[E]%
 \ColumnHook
 \end{hscode}\resethooks

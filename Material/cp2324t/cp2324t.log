@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.20)  15 JAN 2024 03:57
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.20)  15 JAN 2024 18:10
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1426,8 +1426,6 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 
 \openout7 = `cp2324t.ptb'.
 
-\openout7 = `cp2324t.ptb'.
-
 
 Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
@@ -1436,12 +1434,19 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 [9]
 \openout7 = `cp2324t.ptb'.
 
- (./cp2324t.ind
+\openout7 = `cp2324t.ptb'.
+
+
 Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
  []
 
-[10] [11
+[10] (./cp2324t.ind
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[11] [12
 
 
 ]) (./cp2324t.bbl
@@ -1454,16 +1459,16 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
  []
 
-[12
+[13
 
 ] (./cp2324t.aux)
 Package rerunfilecheck Info: File `cp2324t.out' has not changed.
 (rerunfilecheck)             Checksum: DA35CDC4B1C3D714246AA54FE45C0974;1793.
  ) 
 Here is how much of TeX's memory you used:
- 45138 strings out of 480171
- 973649 string characters out of 5894488
- 1521611 words of memory out of 5000000
+ 45139 strings out of 480171
+ 973656 string characters out of 5894488
+ 1525612 words of memory out of 5000000
  62368 multiletter control sequences out of 15000+600000
  731678 words of font info for 151 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
@@ -1513,10 +1518,10 @@ nts/symbols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmary
 rd/stmary10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stma
 ry9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></
 usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on cp2324t.pdf (13 pages, 463260 bytes).
+Output written on cp2324t.pdf (14 pages, 468397 bytes).
 PDF statistics:
- 356 PDF objects out of 1000 (max. 8388607)
- 296 compressed objects within 3 object streams
- 37 named destinations out of 1000 (max. 500000)
+ 360 PDF objects out of 1000 (max. 8388607)
+ 299 compressed objects within 3 object streams
+ 38 named destinations out of 1000 (max. 500000)
  100 words of extra memory for PDF output out of 10000 (max. 10000000)
 

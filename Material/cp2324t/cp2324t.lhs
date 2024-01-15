@@ -696,11 +696,24 @@ matrot (h:t) = h ++ lasts t ++ matrot (deepreverse (myinits t))
 \subsection*{Problema 2}
 
 \begin{code}
+
+isVowel :: Char -> Bool
+isVowel = (`elem` "aáàãâeéèêiíìîoóòõôuúùûAÁÀÃÂEÉÈÊIÍÌÎOÓÒÕÔUÚÙÛ")
+
 reverseVowels :: String -> String
-reverseVowels = undefined
+reverseVowels = reverseByPredicate isVowel
+
+outPredicateList :: (a -> Bool) -> ([a], [a]) -> Either [a] (a, ([a], [a]))
+outPredicateList p ([], l) = i1 l
+outPredicateList p (y:ys, x:xs) =
+    if p x then i2 (y, (ys, xs)) else i2 (x, (y:ys, xs))
+
+cataPredicateList p g = g . recList (cataPredicateList p g) . outPredicateList p
 
 reverseByPredicate :: (a -> Bool) -> [a] -> [a]
-reverseByPredicate p = undefined
+reverseByPredicate p = cataPredicateList p gene . split (reverse . filter p) id
+    where
+        gene = either id cons
 \end{code}
 
 \subsection*{Problema 3}
@@ -721,7 +734,7 @@ start x = (x, x**3 / 6, 20, 22)
 
 \begin{code}
 
-db :: [(Segment, Dist Delay)]
+
 db = f dados where
     f = map constroiDb . agrupar
     agrupar = groupBy(\x y -> fst x == fst y) . sort
@@ -733,10 +746,10 @@ calcularDistribuicaoProbabilidades lista =
       contagem = map (\x -> (head x, fromIntegral (length x) / totalElementos)) $ group lista
   in contagem
 
-mkdist :: Eq a => [a] -> Dist a
+
 mkdist = mkD . calcularDistribuicaoProbabilidades
 
-delay :: Segment -> Dist Delay
+
 delay seg =
     case mkf db seg of
         Nothing -> instantaneous
@@ -754,7 +767,6 @@ distAccum d1 d2 = do
     y <- d2
     return (x+y)
 
-pdelay :: Stop -> Stop -> Dist Delay 
 pdelay s1 s2 = foldr1 distAccum $ map delay $ caminho s1 s2
 
 \end{code}
