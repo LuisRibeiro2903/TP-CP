@@ -119,9 +119,9 @@
 %====== DEFINIR GRUPO E ELEMENTOS =============================================%
 
 \group{G99}
-\studentA{xxxxxx}{Nome }
-\studentB{xxxxxx}{Nome }
-\studentC{xxxxxx}{Nome }
+\studentA{100714}{Diogo }
+\studentB{100608}{Luís }
+\studentC{100647}{Martim }
 
 %==============================================================================%
 
@@ -708,7 +708,7 @@ reverseByPredicate p = undefined
 \begin{code}
 
 snh x = wrapper . worker where
-        worker = for (loop x) (start x)
+        worker = for ((loop x)) ((start x))
         wrapper (a, _, _, _) = a
 
 loop x (snh', h, f, g) = (snh' + h, h * (x **2 / f), f + g, g + 8)
@@ -721,13 +721,41 @@ start x = (x, x**3 / 6, 20, 22)
 
 \begin{code}
 
-db = undefined
+db :: [(Segment, Dist Delay)]
+db = f dados where
+    f = map constroiDb . agrupar
+    agrupar = groupBy(\x y -> fst x == fst y) . sort
+    constroiDb = split (fst . head) (mkdist . map snd)
 
-mkdist = undefined
+calcularDistribuicaoProbabilidades :: Eq a => [a] -> [(a, ProbRep)]
+calcularDistribuicaoProbabilidades lista =
+  let totalElementos = fromIntegral $ length lista
+      contagem = map (\x -> (head x, fromIntegral (length x) / totalElementos)) $ group lista
+  in contagem
 
-delay = undefined
+mkdist :: Eq a => [a] -> Dist a
+mkdist = mkD . calcularDistribuicaoProbabilidades
 
-pdelay = undefined
+delay :: Segment -> Dist Delay
+delay seg =
+    case mkf db seg of
+        Nothing -> instantaneous
+        Just distDelay -> distDelay
+
+caminho :: Stop -> Stop -> [Segment]
+caminho start stop = zip stops (tail stops)
+  where
+    stops = enumFromTo start stop
+
+
+distAccum :: Dist Delay -> Dist Delay -> Dist Delay
+distAccum d1 d2 = do
+    x <- d1
+    y <- d2
+    return (x+y)
+
+pdelay :: Stop -> Stop -> Dist Delay 
+pdelay s1 s2 = foldr1 distAccum $ map delay $ caminho s1 s2
 
 \end{code}
 
