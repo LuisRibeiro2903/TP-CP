@@ -904,7 +904,7 @@ número de Euler:
 	e^x=\sum_{k=0}^\infty \frac{x^{k}}{k!}
 \end{eqnarray}
 
-Na verdade, se fixarmos $k = 2k + 1$ temos exatamente a expressão para $sinh x$ (\ref{eq:sinh}). Lembramo-nos então de um exercício que ao se estudar para os testes escritos
+Na verdade, se fixarmos $k = 2k + 1$ temos exatamente a expressão para $sinh\ x$ (\ref{eq:sinh}). Lembramo-nos então de um exercício que ao se estudar para os testes escritos
 se resolveu que tratava de um problema semelhante mas para o número de Euler\footnote{Exercício (\ref{ex:euler}) em \cite{Ol18}, página \pageref{ex:euler}.}.
 
 \noindent
