@@ -815,7 +815,7 @@ em que se iam aproximando do ``centro'' da String e trocavam de referências qua
 dessa solução mas não foi o caso.
 
 Pensamos então melhor e chegamos à conclusão que podíamos utilizar uma lista auxiliar que (no contexto do \emph{reverseVowels}) teria todas as vogais
-presentes na String, já pela ordem inversa. Com esta lista auxiliar seria percorrer ambas e quando o predicado se verificar na principal, construa-se a lista final
+presentes na String, já pela ordem inversa. Com esta lista auxiliar seria percorrer ambas e quando o predicado se verificar na principal, construía-se a lista final
 com a cabeça da lista auxiliar. Caso contrário constrói-se com a cabeça da principal
 
 \subsubsection*{Resolução}
