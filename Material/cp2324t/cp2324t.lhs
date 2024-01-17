@@ -117,7 +117,10 @@
 %format (ana' (f) (g)) = "\lanabracket\;\!" f "\:" g "\:\!\ranabracket"
 %format (hylo' (ft) (ff) (gt) (gf)) = "\llbracket\, " ft "\:" ff ",\," gt "\:" gf "\,\rrbracket"
 %------------------------------------------------------------------------------%
-
+\DeclareMathOperator{\snh}{snh}
+\DeclareMathOperator{\h}{h}
+\DeclareMathOperator{\f}{f}
+\DeclareMathOperator{\g}{g}
 
 %====== DEFINIR GRUPO E ELEMENTOS =============================================%
 
@@ -686,6 +689,41 @@ que sejam necessárias.
 
 \subsection*{Problema 1}
 
+\subsubsection*{Análise do problema}
+Neste problema decidimos analisar bem as imagens de exemplo que apareciam no enunciado, pois achamos que com uma perceção visual do problema 
+conseguimos mais rapidamente chegar a uma solução.
+
+Após a dita análise conseguimos observar um certo \textbf{padrão} na travessia pedida, lembrando que uma matriz é apenas uma lista de listas:
+
+\begin{enumerate}   
+    \item A cabeça da lista mantém-se (e retira-se)
+    \item Os próximos elementos são os últimos das seguintes listas (e retira-se)
+    \item Inverte-se a ordem dos elementos de todas as sub-listas restantes, da própria matriz e volta-se ao passo 1.
+\end{enumerate}
+
+Testemos então este \textbf{padrão} com o exemplo dado no enunciado, a matriz \begin{code} mat = [[1,2,3], [4,5,6], [7,8,9]] \end{code}
+Mantemos a lista resultado na variável \emph{result}:
+
+\begin{enumerate}   
+    \item A cabeça da lista mantém-se (e retira-se):
+
+        \emph{result} = [1,2,3] e \emph{mat} = [[4,5,6], [7,8,9]]
+    \item Os próximos elementos são os últimos das seguintes listas (e retira-se)
+
+        \emph{result} = [1,2,3,6,9] e \emph{mat} = [[4,5], [7,8]]
+    \item Inverte-se a ordem dos elementos de todas as sub-listas restantes, da própria matriz e volta-se ao passo 1.
+
+        \emph{result} mantém-se. Primeiro inverter a ordem das sub-listas: \emph{mat} = [[5,4], [8,7]]. 
+        Depois da própria matriz: \emph{mat} = [[8,7], [5,4]]
+\end{enumerate}
+
+\noindent
+Ao voltar-se ao passo 1. e repetir o processo chega-se ao resultado final de \emph{result} = [1,2,3,6,9,8,7,4,5] que é o esperado.
+
+\subsubsection*{Resolução}
+
+Partindo agora para a resolução do problema, começamos por definir um catamorfismo que tratasse de nos retornar os últimos elementos das sub-listas, 
+originando este diagrama:
 \begin{eqnarray*}
 \xymatrix@@C=3cm{
     (|A|^*)^*
@@ -704,6 +742,11 @@ que sejam necessárias.
 \start
 lasts = |cataList (either nil (cons . (last >< id)))|
 \end{eqnarray*}
+
+Agora precisamos de algo que nos retorne as sub-listas da matriz sem os últimos elementos, pois partimos sempre da mesma matriz independentemente
+das operações que aplicamos, e o catamorfismo anterior e qualquer outro que usemos não alteram a ``referência'' da matriz. 
+
+Deu origem a este diagrama de um catamorfismo:
 \begin{eqnarray*}
 \xymatrix@@C=3cm{
     (|A|^*)^*
@@ -722,6 +765,12 @@ lasts = |cataList (either nil (cons . (last >< id)))|
 \start
 myinits = |cataList (either nil (cons . (init >< id)))|
 \end{eqnarray*}
+
+\noindent
+Por fim é preciso algo que nos trate do ponto 3. do \textbf{padrão}. Um simples \emph{reverse} não chega pois é preciso reverter as sub-listas também.
+De certa forma é preciso um ``deep'' reverse, que trate das duas coisas.
+
+O diagrama do catamorfismo seguinte é apenas referente à parte de reverter as sublistas:
 \begin{eqnarray*}
 \xymatrix@@C=3cm{
     (|A|^*)^*
@@ -740,6 +789,8 @@ myinits = |cataList (either nil (cons . (init >< id)))|
 \start
 deepreverse = |reverse . cataList (either nil (cons . (reverse >< id)))|
 \end{eqnarray*}
+
+Com estas 3 funções definidas, podemos tratar de resolver por fim o problema:
 \begin{code}
 matrot :: Eq a => [[a]] -> [a]
 matrot [] = []
@@ -750,33 +801,198 @@ matrot (h:t) = h ++ lasts t ++ matrot (deepreverse (myinits t))
         deepreverse = reverse . cataList (either nil (cons . (reverse >< id)))
 \end{code}
 
+\textbf{NB:} O grupo gostaria de ter utilizado mais conhecimento desta cadeira para tentar tornar tudo \emph{pointfree} no entanto esta foi a solução que conseguimos obter.
+
 \subsection*{Problema 2}
 
-\begin{code}
+\subsubsection*{Análise do problema}
 
+Neste problema, a informação de que se trata de uma questão popular em entrevistas de emprego ajudou para pesquisar mais sobre este desafio. 
+Rapidamente se chegou a soluções implementadas noutro tipo de linguagens como \textbf{C}, \textbf{C++}, \textbf{Java} e \textbf{Python}.
+
+A que era mais aceite e apreciada, de uma forma sucinta, era uma solução que envolve dois \emph{pointers}, um no início da String e outro no fim,
+em que se iam aproximando do ``centro'' da String e trocavam de referências quando o predicado era verificado. Tentamos ver se conseguiamos tirar proveito
+dessa solução mas não foi o caso.
+
+Pensamos então melhor e chegamos à conclusão que podíamos utilizar uma lista auxiliar que (no contexto do \emph{reverseVowels}) teria todas as vogais
+presentes na String, já pela ordem inversa. Com esta lista auxiliar seria percorrer ambas e quando o predicado se verificar na principal, construia-se a lista final
+com a cabeça da lista auxiliar. Caso contrário constrói-se com a cabeça da principal
+
+\subsubsection*{Resolução}
+
+Começa-se definindo o predicado usado para o caso das vogais:
+\begin{code}
 isVowel :: Char -> Bool
 isVowel = (`elem` "aáàãâeéèêiíìîoóòõôuúùûAÁÀÃÂEÉÈÊIÍÌÎOÓÒÕÔUÚÙÛ")
+\end{code}
 
+A \emph{reverseVowels} será apenas a mais genérica, \emph{reverseByPredicate}, com o predicado definido anteriormente:
+\begin{code}
 reverseVowels :: String -> String
 reverseVowels = reverseByPredicate isVowel
+\end{code}
 
+A parte principal e mais desafiante começa agora, que seria definir a função genérica. Implementar a solução discutida na secção de análise em Haskell não seria
+algo complicado, no entanto queriamos tentar envolver mais conceitos da cadeira.
+
+Tentamos então fazer diagramas para tentar perceber o que se poderia utilizar aqui. Olhando para a definição de catamorfismo:
+\begin{eqnarray*}
+\start
+|cataList g = g . F (cataList g) . outList|
+\end{eqnarray*}
+
+Achamos que para o contexto do que queriamos obter, era o que mais se adequava. Não seria no entanto um catamorfismo já definido, teríamos que definir um ``novo'' pois
+estamos a trabalhar com as duas listas, principal e auxiliar.
+
+Este foi o diagrama que, juntamente com a definição de catamorfismo, nos levou a essa conclusão:
+\begin{eqnarray*}
+\xymatrix@@C=2.5cm{
+    |A|^*| >< A|^*
+            \ar[d]_-{|f|}
+            \ar[r]_-{|out|}
+    &
+        |A|^* + |A >< (A|^*| >< A|^*)
+            \ar[d]^{|id + id >< f|}
+    \\
+        |A|^*
+    &
+        |A|^* + |A >< A|^* 
+            \ar[l]^-{|either id cons|}
+}
+\end{eqnarray*}
+Este catamorfismo tem uma peculiaridade que é a necessidade de ser acompanhado pelo predicado requirido pelo problema. Isto levou-nos a considerar se seria válido chamar
+a esta solução um catamorfismo, no entanto, visto que segue a definição referida em cima, mantemos a nomenclatura.
+
+Conseguimos então definir o BiFunctor: \begin{eqnarray*}\start |B(f,g) = id + f >< g|\end{eqnarray*}
+
+Temos então a definição do \emph{out} para esta estrutura de dados:
+\begin{code}
 outPredicateList :: (a -> Bool) -> ([a], [a]) -> Either [a] (a, ([a], [a]))
 outPredicateList p ([], l) = i1 l
 outPredicateList p (y:ys, x:xs) =
     if p x then i2 (y, (ys, xs)) else i2 (x, (y:ys, xs))
+\end{code}
 
+Deixamos na primeira parte do \emph{Either} a lista principal quando a auxiliar tiver sido toda percorrida. Na segunda parte, temos o conjunto com o elemento a ``entrar'' na
+lista resultado, e com as duas listas, principal e auxiliar.
+
+Fica assim definido o catamorfismo:
+\begin{code}
 cataPredicateList p g = g . recList (cataPredicateList p g) . outPredicateList p
+\end{code}
 
+Acabando então com a função genérica:
+\begin{code}
 reverseByPredicate :: (a -> Bool) -> [a] -> [a]
-reverseByPredicate p = cataPredicateList p gene . split (reverse . filter p) id
+reverseByPredicate p = f p gene . split (reverse . filter p) id
     where
+        f p gene = cataPredicateList p gene
         gene = either id cons
 \end{code}
 
+\noindent
+Antes do catamorfismo, criamos o par (lista auxiliar, lista principal). A lista auxiliar seria apenas filtrar a principal segundo o predicado e depois revertê-la.
 \subsection*{Problema 3}
 
-\begin{code}
+\subsubsection*{Análise do Problema}
 
+Este é um desafio bastante interessante, porque possibilita um aumento em eficiência significativo quando comparado com a solução de forma recursiva. Ao observar
+a expressão matemática no corpo do somatório reparamos em algo interessante. Notamos que existe uma enorme semelhança com a definição da expressão do $e^x$,
+número de Euler:
+\begin{eqnarray}
+\start
+	e^x=\sum_{k=0}^\infty \frac{x^{k}}{k!}
+\end{eqnarray}
+
+Na verdade, se fixarmos $k = 2k + 1$ temos exatamente a expressão para $sinh x$ (\ref{eq:sinh}). Lembramo-nos então de um exercício que ao se estudar para os testes escritos
+se resolveu que tratava de um problema semelhante mas para o número de Euler\footnote{Exercício (\ref{ex:euler}) em \cite{Ol18}, página \pageref{ex:euler}.}.
+
+\noindent
+\textbf{NB:} Não mostramos a resolução do exercício mencionado pois é equiparado ao pedido para resolver no enunciado, como referido.
+
+\subsubsection*{Resolução}
+
+Facilmente conseguimos perceber o valor de snh para $k = 0$:
+\[
+    snh\ x\ 0 = \frac{x^{2 \cdot 0 + 1 }}{(2 \cdot 0 + 1)!} = \frac{x^1}{1!} = x
+\]
+\noindent
+Agora tem de se ver o caso para $k = k + 1$
+\[
+\begin{split}
+    &\snh\ x\ (k + 1) = \sum_{i=0}^{k+1} \frac{x^{2(k + 1) + 1}}{(2(k + 1) + 1)!} \\
+    &\equiv \\
+    &\snh\ x\ (k + 1) = \sum_{i=0}^{k+1} \frac{x^{2k + 3}}{(2k + 3)!} \\
+    &\equiv \\
+    &\snh\ x\ (k + 1) = snh\ x\ k + \frac{x^{2k + 3}}{(2k + 3)!}
+\end{split} 
+\]
+\noindent
+Como temos $snh\ x\ (k+1)$ a depender do termo $\frac{x^{2k + 3}}{(2k + 3)!}$ definimos $h\ x\ k = \frac{x^{2k + 3}}{(2k + 3)!}$
+
+Repetimos agora o processo para $h\ x\ 0$:
+\[
+    h\ x\ 0 = \frac{x^{2 \cdot 0 + 3}}{(2 \cdot 0 + 3)!} = \frac{x^3}{6}
+\]
+
+E para $h\ x\ (k+1)$:
+\[
+\begin{split}
+    &\h\ x\ (k + 1) = \frac{x^{2(k + 1) + 3}}{(2(k + 1) + 3)!} \\
+    &\equiv \\
+    &\h\ x\ (k + 1) = \frac{x^{2k + 3 + 2}}{(2k + 3 + 2)!} \\
+    &\equiv \\
+    &\h\ x\ (k + 1) = \frac{x^{2k + 3} \cdot x^{2}}{(2k + 3)! \cdot (2k + 4) \cdot (2k + 5)} \\
+    &\equiv \\
+    &\h\ x\ (k + 1) = \frac{x^{2k + 3}}{(2k + 3)!} \cdot \frac{x^{2}}{(2k + 4) \cdot (2k + 5)} \\
+    &\equiv \\
+    &\h\ x\ (k + 1) = h\ x\ k \cdot \frac{x^{2}}{4k^{2} + 18k + 20}
+\end{split} 
+\]
+\noindent
+Acontece mais uma vez a mesma coisa que em $snh\ x\ (k+1)$, o denominador da segunda parcela da soma em $h\ x\ (k+1)$ depende de k. 
+Criamos entao $f\ k = 4k^{2} + 18k + 20$.
+
+Para esta parte não é preciso muitos mais cálculos, pois no anexo \ref{sec:mr} é nos dado um exemplo envolvendo polinómios do segundo grau,
+que é exatamente o que $f\ k$ trata. Seguindo a resolução que lá mostra temos:
+\[
+    \begin{cases}
+        \begin{cases}
+            f\ 0 &= 20 \\
+            f\ (k + 1) &= f\ k + g\ k
+        \end{cases} \\
+        \begin{cases}
+            g\ 0 &= 4 + 18 = 22 \\
+            g\ (k + 1) &= g\ k + 2 \cdot 4 = g\ k + 8
+        \end{cases}
+    \end{cases}
+\]
+\noindent
+Em suma, temos então:
+\[
+    \begin{cases}
+        \begin{cases}
+            snh\ x\ 0 &= x \\
+            snh\ x\ (k + 1) &= snh\ x\ k + h\ x\ k
+        \end{cases} \\
+        \begin{cases}
+            h\ x\ 0 &= \frac{x^3}{6} \\
+            \h\ x\ (k + 1) &= h\ x\ k \cdot \frac{x^{2}}{f\ k}
+        \end{cases} \\
+        \begin{cases}
+            f\ 0 &= 20 \\
+            f\ (k + 1) &= f\ k + g\ k
+        \end{cases} \\
+        \begin{cases}
+            g\ 0 &= 22 \\
+            g\ (k + 1) &= g\ k + 8
+        \end{cases}
+    \end{cases}
+\]
+\noindent
+Com isto podemos então aplicar a \emph{regra de algibeira} do anexo \ref{sec:mr}:
+
+\begin{code}
 snh x = wrapper . worker where
         worker = for ((loop x)) ((start x))
         wrapper (a, _, _, _) = a
@@ -784,46 +1000,95 @@ snh x = wrapper . worker where
 loop x (snh', h, f, g) = (snh' + h, h * (x **2 / f), f + g, g + 8)
 
 start x = (x, x**3 / 6, 20, 22)
-
 \end{code}
 
 \subsection*{Problema 4}
 
+\subsubsection*{Análise do Problema}
+
+Talvez o problema mais interessante, pelos seus efeitos práticos, mas também o que requeriu mais discussão para perceber por onde começar.
+Percebeu-se no entanto que o ínicio estaria pela implementação da função \emph{mkdist}. O desafio aqui seria perceber como se iria calcular as probabilidades
+dos elementos. Basicamente será a probabilidade de um elemento a occorrer na lista. Acabamos por perceber que se agruparmos os elementos iguais em sub-listas,
+podemos depois calcular a probabilidade desse elemento dividindo o tamanho da sub-lista desse elemento pelo tamanho da lista (inicial) total.
+
+De seguida, com \emph{mkdist} implementada, o próximo passo seria ``preencher'' a base de dados. Agora a tarefa é mais facilitada, teríamos que aplicar a função anterior
+aos conjuntos de segmentos obtidos em \emph{dados}.
+
+A parte mais simples seria a próxima, que era implementar \emph{delay}. Com as funções \emph{mkf} e \emph{instantaneous} fornecidas no anexo \ref{sec:codigo}
+o nosso trabalho ficou facilitado se interpretarmos a \emph{db} como uma espécie de \textbf{map} e \emph{mkf} uma espécie de \textbf{get} dado uma key, para
+se obter o valor associado.
+
+Por fim, teríamos que implementar a função ``principal'', \emph{pdelay}. Aqui rapidamente percebemos que se, a partir das duas paragens dadas em argumento, 
+obtivéssemos o caminho total (por exemplo,  caminho de S0 a S3 seria [(S0, S1), (S1, S2), (S2, S3)]) bastaria fazer a probabilidade de \emph{delay} acumulada.
+
+\subsubsection*{Resolução}
+
+Vejamos agora como está implementado.
+
+\emph{mkdist} como referido usaria um função que calcula a probabilidade de cada elemento estar presente na lista:
 \begin{code}
-
-
-db = f dados where
-    f = map constroiDb . agrupar
-    agrupar = groupBy(\x y -> fst x == fst y) . sort
-    constroiDb = split (fst . head) (mkdist . map snd)
-
 calcularDistribuicaoProbabilidades :: Eq a => [a] -> [(a, ProbRep)]
 calcularDistribuicaoProbabilidades lista =
   let totalElementos = fromIntegral $ length lista
       contagem = map (\x -> (head x, fromIntegral (length x) / totalElementos)) $ group lista
   in contagem
+\end{code}
 
+Restava então utilizar um função definida na biblioteca de probabilidades fornecida, \emph{mkD}, que cria uma distribuição dado uma lista de
+$(a, ProbRep)$:
 
+\begin{code}
 mkdist = mkD . calcularDistribuicaoProbabilidades
+\end{code}
 
+\noindent
+Para construir a base de dados, utiliza-se a função \emph{agrupar} na lista de dados, que agrupa os segmentos iguais em sub-listas. Depois
+cria-se então um par de segmento e a distribuição do seu atraso, com a \emph{mkdist}.
 
+\textbf{NB:} Usamos um sort em \emph{agrupar} para ser possível os dados serem passados em qualquer ordem, embora os do enunciado estejam já ordenados por segmento:
+\begin{code}
+db = f dados where
+    f = map constroiDb . agrupar
+    agrupar = groupBy(\x y -> fst x == fst y) . sort
+    constroiDb = split (fst . head) (mkdist . map snd)
+\end{code}
+
+\noindent
+Para a função \emph{delay} seria apenas verificar o caso do \textbf{Maybe} que o \emph{mkf} retorna. É \textbf{importante} referir que o grupo assumiu que
+caso o resultado fosse \textbf{Nothing} o suposto seria usar a função \emph{instantaneous}:
+\begin{code}
 delay seg =
     case mkf db seg of
         Nothing -> instantaneous
         Just distDelay -> distDelay
+\end{code}
 
+\noindent
+Finalmente, para implementar \emph{pdelay}, como foi referido na parte de análise seria preciso uma função que dadas duas paragens 
+retorna o caminho de uma a outra:
+\begin{code}
 caminho :: Stop -> Stop -> [Segment]
 caminho start stop = zip stops (tail stops)
   where
     stops = enumFromTo start stop
+\end{code}
 
-
+\noindent
+Para a função de produzir a distribuição das probabilidades acumuladas, tiramos proveito do facto de \textbf{Dist} ser um Monad, facilitando e 
+tornando elegante a implementação desta função:
+\begin{code}
 distAccum :: Dist Delay -> Dist Delay -> Dist Delay
 distAccum d1 d2 = do
     x <- d1
     y <- d2
     return (x+y)
+\end{code}
 
+\noindent
+Tendo agora a função \emph{pdelay} concluída, que aplica \emph{delay} nos vários segmentos do caminho de s1 a s2. Logo após, utilizamos \emph{foldr1},
+uma variante da muito famosa operação \emph{foldr} que é uma função de ordem superior que é usada para reduzir uma lista a um único valor. Esta variante
+assume que a lista nunca é vazia não necessitando de inicialização.
+\begin{code}
 pdelay s1 s2 = foldr1 distAccum $ map delay $ caminho s1 s2
 
 \end{code}

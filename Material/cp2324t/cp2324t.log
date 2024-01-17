@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.20)  17 JAN 2024 00:56
+This is pdfTeX, Version 3.141592653-2.6-1.40.22 (TeX Live 2022/dev/Debian) (preloaded format=pdflatex 2023.12.20)  17 JAN 2024 22:12
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1097,7 +1097,7 @@ Package: polytable 2013/07/18 v0.8.5 `polytable' package (Andres Loeh)
 )
 \blanklineskip=\skip73
 LaTeX Font Info:    Trying to load font information for T1+PTSerif-TLF on input
- line 280.
+ line 283.
 
 (/usr/share/texlive/texmf-dist/tex/latex/paratype/T1PTSerif-TLF.fd
 File: T1PTSerif-TLF.fd 2014/02/02 Font definitions for T1/PTSerif-TLF.
@@ -1110,25 +1110,25 @@ File: l3backend-pdftex.def 2022-01-12 L3 backend support: PDF output (pdfTeX)
 (./cp2324t.aux)
 \openout1 = `cp2324t.aux'.
 
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 280.
-LaTeX Font Info:    ... okay on input line 280.
-Package hyperref Info: Link coloring ON on input line 280.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for TS1/cmr/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+LaTeX Font Info:    Checking defaults for PU/pdf/m/n on input line 283.
+LaTeX Font Info:    ... okay on input line 283.
+Package hyperref Info: Link coloring ON on input line 283.
  (/usr/share/texlive/texmf-dist/tex/latex/hyperref/nameref.sty
 Package: nameref 2021-04-02 v2.47 Cross-referencing by name of section
 
@@ -1140,9 +1140,9 @@ Package: gettitlestring 2019/12/15 v1.6 Cleanup title references (HO)
 )
 \c@section@level=\count350
 )
-LaTeX Info: Redefining \ref on input line 280.
-LaTeX Info: Redefining \pageref on input line 280.
-LaTeX Info: Redefining \nameref on input line 280.
+LaTeX Info: Redefining \ref on input line 283.
+LaTeX Info: Redefining \pageref on input line 283.
+LaTeX Info: Redefining \nameref on input line 283.
 
 (./cp2324t.out) (./cp2324t.out)
 \@outlinefile=\write8
@@ -1209,25 +1209,25 @@ Package caption Info: End \AtBeginDocument code.
 * \@reversemarginfalse
 * (1in=72.27pt=25.4mm, 1cm=28.453pt)
 
-LaTeX Font Info:    Trying to load font information for U+msa on input line 280
+LaTeX Font Info:    Trying to load font information for U+msa on input line 283
 .
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsa.fd
 File: umsa.fd 2013/01/14 v3.01 AMS symbols A
 )
-LaTeX Font Info:    Trying to load font information for U+msb on input line 280
+LaTeX Font Info:    Trying to load font information for U+msb on input line 283
 .
 
 (/usr/share/texlive/texmf-dist/tex/latex/amsfonts/umsb.fd
 File: umsb.fd 2013/01/14 v3.01 AMS symbols B
 )
 LaTeX Font Info:    Trying to load font information for U+stmry on input line 2
-80.
+83.
 
 (/usr/share/texlive/texmf-dist/tex/latex/stmaryrd/Ustmry.fd)
-Package xypdf Info: Line width: 0.43799pt on input line 280.
+Package xypdf Info: Line width: 0.43799pt on input line 283.
 \c@lstlisting=\count357
 LaTeX Font Info:    Trying to load font information for T1+PTSans-TLF on input 
-line 281.
+line 284.
 
 (/usr/share/texlive/texmf-dist/tex/latex/paratype/T1PTSans-TLF.fd
 File: T1PTSans-TLF.fd 2011/05/04 (autoinst with patch) Font definitions for T1/
@@ -1302,7 +1302,7 @@ pdfTeX warning (ext4): destination with the same identifier (name{page.1}) has
 been already used, duplicate ignored
 <to be read again> 
                    \relax 
-l.348 \end{quote}
+l.351 \end{quote}
                   [1
 
 ]
@@ -1312,7 +1312,7 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 
 [2]
 LaTeX Font Info:    Trying to load font information for TS1+PTSerif-TLF on inpu
-t line 417.
+t line 420.
  (/usr/share/texlive/texmf-dist/tex/latex/paratype/TS1PTSerif-TLF.fd
 File: TS1PTSerif-TLF.fd 2014/02/02 Font definitions for TS1/PTSerif-TLF.
 )
@@ -1337,14 +1337,14 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 
 [3]
 LaTeX Font Info:    Trying to load font information for T1+PTMono-TLF on input 
-line 515.
+line 518.
  (/usr/share/texlive/texmf-dist/tex/latex/paratype/T1PTMono-TLF.fd
 File: T1PTMono-TLF.fd 2014/02/02 Font definitions for T1/PTMono-TLF.
 )
 <cp2324t_media/lhs.jpg, id=104, 1557.82pt x 967.615pt>
 File: cp2324t_media/lhs.jpg Graphic file (type jpg)
 <use cp2324t_media/lhs.jpg>
-Package pdftex.def Info: cp2324t_media/lhs.jpg  used on input line 524.
+Package pdftex.def Info: cp2324t_media/lhs.jpg  used on input line 527.
 (pdftex.def)             Requested size: 187.78532pt x 116.62555pt.
 
 Overfull \hbox (128.0374pt too wide) has occurred while \output is active
@@ -1359,7 +1359,7 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 [5] <xymatrix 2x2 191>
 
 Package hyperref Warning: Token not allowed in a PDF string (Unicode):
-(hyperref)                removing `subscript' on input line 636.
+(hyperref)                removing `subscript' on input line 639.
 
 \openout7 = `cp2324t.ptb'.
 
@@ -1394,17 +1394,17 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 \openout7 = `cp2324t.ptb'.
 
 
-Overfull \hbox (15.51062pt too wide) in paragraph at lines 819--828
+Overfull \hbox (15.51062pt too wide) in paragraph at lines 822--831
  [][] 
  []
 
 
-Overfull \hbox (15.51062pt too wide) in paragraph at lines 819--828
+Overfull \hbox (15.51062pt too wide) in paragraph at lines 822--831
  [][] 
  []
 
 
-Overfull \hbox (15.51062pt too wide) in paragraph at lines 819--828
+Overfull \hbox (15.51062pt too wide) in paragraph at lines 822--831
  [][] 
  []
 
@@ -1422,18 +1422,6 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
 
 \openout7 = `cp2324t.ptb'.
 
- <xymatrix 2x2 249> <xymatrix 2x2 249> <xymatrix 2x2 249>
-Overfull \hbox (128.0374pt too wide) has occurred while \output is active
- [][]| 
- []
-
-[9]
-\openout7 = `cp2324t.ptb'.
-
-\openout7 = `cp2324t.ptb'.
-
-\openout7 = `cp2324t.ptb'.
-
 \openout7 = `cp2324t.ptb'.
 
 
@@ -1441,12 +1429,75 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
  []
 
-[10] (./cp2324t.ind
+[9] <xymatrix 2x2 249> <xymatrix 2x2 249> <xymatrix 2x2 249>
 Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
  []
 
-[11] [12
+[10]
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+ <xymatrix 2x2 191>
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[11]
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[12]
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[13]
+\openout7 = `cp2324t.ptb'.
+
+
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[14]
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+\openout7 = `cp2324t.ptb'.
+
+
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[15]
+\openout7 = `cp2324t.ptb'.
+
+ (./cp2324t.ind
+Overfull \hbox (128.0374pt too wide) has occurred while \output is active
+ [][]| 
+ []
+
+[16] [17
 
 
 ]) (./cp2324t.bbl
@@ -1459,22 +1510,25 @@ Overfull \hbox (128.0374pt too wide) has occurred while \output is active
  [][]| 
  []
 
-[13
+[18
 
 ] (./cp2324t.aux)
 Package rerunfilecheck Info: File `cp2324t.out' has not changed.
 (rerunfilecheck)             Checksum: DA35CDC4B1C3D714246AA54FE45C0974;1793.
  ) 
 Here is how much of TeX's memory you used:
- 45147 strings out of 480171
- 973694 string characters out of 5894488
- 1530630 words of memory out of 5000000
- 62376 multiletter control sequences out of 15000+600000
- 731678 words of font info for 151 fonts, out of 8000000 for 9000
+ 45169 strings out of 480171
+ 973878 string characters out of 5894488
+ 1522740 words of memory out of 5000000
+ 62383 multiletter control sequences out of 15000+600000
+ 732542 words of font info for 153 fonts, out of 8000000 for 9000
  59 hyphenation exceptions out of 8191
- 99i,19n,94p,3281b,870s stack positions out of 5000i,500n,10000p,200000b,80000s
-pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exi
+ 99i,19n,94p,3281b,866s stack positions out of 5000i,500n,10000p,200000b,80000s
+pdfTeX warning (dest): name{Hfootnote.8} has been referenced but does not exi
 st, replaced by a fixed one
+
+pdfTeX warning (dest): name{Hfootnote.7} has been referenced but does not exist
+, replaced by a fixed one
 
 pdfTeX warning (dest): name{Hfootnote.6} has been referenced but does not exist
 , replaced by a fixed one
@@ -1511,18 +1565,19 @@ xlive/texmf-dist/fonts/type1/public/amsfonts/cm/cmex10.pfb></usr/share/texlive/
 texmf-dist/fonts/type1/public/amsfonts/cm/cmmi10.pfb></usr/share/texlive/texmf-
 dist/fonts/type1/public/amsfonts/cm/cmmi9.pfb></usr/share/texlive/texmf-dist/fo
 nts/type1/public/amsfonts/cm/cmr10.pfb></usr/share/texlive/texmf-dist/fonts/typ
-e1/public/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
-c/amsfonts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsf
-onts/cm/cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sy
-mbols/msam10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/sym
-bols/msbm10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stma
-ry10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stmary9.pfb
-></usr/share/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/sha
-re/texlive/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
-Output written on cp2324t.pdf (14 pages, 479353 bytes).
+e1/public/amsfonts/cm/cmr7.pfb></usr/share/texlive/texmf-dist/fonts/type1/publi
+c/amsfonts/cm/cmr9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfon
+ts/cm/cmsy10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/cm/
+cmsy9.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/ms
+am10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/amsfonts/symbols/msb
+m10.pfb></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stmary10.pfb
+></usr/share/texlive/texmf-dist/fonts/type1/public/stmaryrd/stmary9.pfb></usr/s
+hare/texlive/texmf-dist/fonts/type1/public/xypic/xyatip10.pfb></usr/share/texli
+ve/texmf-dist/fonts/type1/public/xypic/xybtip10.pfb>
+Output written on cp2324t.pdf (19 pages, 508101 bytes).
 PDF statistics:
- 366 PDF objects out of 1000 (max. 8388607)
- 302 compressed objects within 4 object streams
- 38 named destinations out of 1000 (max. 500000)
+ 410 PDF objects out of 1000 (max. 8388607)
+ 339 compressed objects within 4 object streams
+ 51 named destinations out of 1000 (max. 500000)
  100 words of extra memory for PDF output out of 10000 (max. 10000000)
 
