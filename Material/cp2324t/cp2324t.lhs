@@ -815,12 +815,12 @@ em que se iam aproximando do ``centro'' da String e trocavam de referências qua
 dessa solução mas não foi o caso.
 
 Pensamos então melhor e chegamos à conclusão que podíamos utilizar uma lista auxiliar que (no contexto do \emph{reverseVowels}) teria todas as vogais
-presentes na String, já pela ordem inversa. Com esta lista auxiliar seria percorrer ambas e quando o predicado se verificar na principal, construia-se a lista final
+presentes na String, já pela ordem inversa. Com esta lista auxiliar seria percorrer ambas e quando o predicado se verificar na principal, construa-se a lista final
 com a cabeça da lista auxiliar. Caso contrário constrói-se com a cabeça da principal
 
 \subsubsection*{Resolução}
 
-Começa-se definindo o predicado usado para o caso das vogais:
+Começa-se por definir o predicado usado para o caso das vogais:
 \begin{code}
 isVowel :: Char -> Bool
 isVowel = (`elem` "aáàãâeéèêiíìîoóòõôuúùûAÁÀÃÂEÉÈÊIÍÌÎOÓÒÕÔUÚÙÛ")
@@ -1008,7 +1008,7 @@ start x = (x, x**3 / 6, 20, 22)
 
 Talvez o problema mais interessante, pelos seus efeitos práticos, mas também o que requeriu mais discussão para perceber por onde começar.
 Percebeu-se no entanto que o ínicio estaria pela implementação da função \emph{mkdist}. O desafio aqui seria perceber como se iria calcular as probabilidades
-dos elementos. Basicamente será a probabilidade de um elemento a occorrer na lista. Acabamos por perceber que se agruparmos os elementos iguais em sub-listas,
+dos elementos. Basicamente será a probabilidade de um elemento occorrer na lista. Acabamos por perceber que se agruparmos os elementos iguais em sub-listas,
 podemos depois calcular a probabilidade desse elemento dividindo o tamanho da sub-lista desse elemento pelo tamanho da lista (inicial) total.
 
 De seguida, com \emph{mkdist} implementada, o próximo passo seria ``preencher'' a base de dados. Agora a tarefa é mais facilitada, teríamos que aplicar a função anterior
@@ -1034,7 +1034,7 @@ calcularDistribuicaoProbabilidades lista =
   in contagem
 \end{code}
 
-Restava então utilizar um função definida na biblioteca de probabilidades fornecida, \emph{mkD}, que cria uma distribuição dado uma lista de
+Restava então utilizar uma função definida na biblioteca de probabilidades fornecida, \emph{mkD}, que cria uma distribuição dado uma lista de
 $(a, ProbRep)$:
 
 \begin{code}
