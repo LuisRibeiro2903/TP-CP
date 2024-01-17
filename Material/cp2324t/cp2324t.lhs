@@ -56,6 +56,9 @@
 %format LTree = "{\LTree}"
 %format FTree = "{\FTree}"
 %format inNat = "\mathsf{in}"
+%format outNat = "\mathsf{out}"
+%format inList = "\mathsf{in}"
+%format outList = "\mathsf{out}"
 %format (cata (f)) = "\llparenthesis\, " f "\,\rrparenthesis"
 %format (cataNat (g)) = "\cataNat{" g "}"
 %format (cataList (g)) = "\llparenthesis\, " g "\,\rrparenthesis"
@@ -118,10 +121,10 @@
 
 %====== DEFINIR GRUPO E ELEMENTOS =============================================%
 
-\group{G99}
-\studentA{100714}{Diogo }
-\studentB{100608}{Luís }
-\studentC{100647}{Martim }
+\group{G15}
+\studentA{100714}{Diogo Santos}
+\studentB{100608}{Luís Ribeiro}
+\studentC{100647}{Martim Félix}
 
 %==============================================================================%
 
@@ -683,6 +686,60 @@ que sejam necessárias.
 
 \subsection*{Problema 1}
 
+\begin{eqnarray*}
+\xymatrix@@C=3cm{
+    (|A|^*)^*
+           \ar[d]_-{|lasts|}
+           \ar@@/^/[r]^-{|outList|}
+&
+    |1| + |A|^* |>< (A|^*)^*
+           \ar[d]^{|id + id >< lasts|}
+           \ar@@/^/[l]^-{|inList|}
+\\
+     |A|^*
+&
+     |1 + A|^*| >< A|^* 
+           \ar[l]^-{|either nil (cons . (last >< id))|}
+}
+\start
+lasts = |cataList (either nil (cons . (last >< id)))|
+\end{eqnarray*}
+\begin{eqnarray*}
+\xymatrix@@C=3cm{
+    (|A|^*)^*
+           \ar[d]_-{|myinits|}
+           \ar@@/^/[r]^-{|outList|}
+&
+    |1| + |A|^* |>< (A|^*)^*
+           \ar[d]^{|id + id >< myinits|}
+           \ar@@/^/[l]^-{|inList|}
+\\
+     |A|^*
+&
+     |1 + A|^*| >< A|^* 
+           \ar[l]^-{|either nil (cons . (init >< id))|}
+}
+\start
+myinits = |cataList (either nil (cons . (init >< id)))|
+\end{eqnarray*}
+\begin{eqnarray*}
+\xymatrix@@C=3cm{
+    (|A|^*)^*
+           \ar[d]_-{|aux|}
+           \ar@@/^/[r]^-{|outList|}
+&
+    |1| + |A|^* |>< (A|^*)^*
+           \ar[d]^{|id + id >< aux|}
+           \ar@@/^/[l]^-{|inList|}
+\\
+     |A|^*
+&
+     |1 + A|^*| >< A|^* 
+           \ar[l]^-{|either nil (cons . (reverse >< id))|}
+}
+\start
+deepreverse = |reverse . cataList (either nil (cons . (reverse >< id)))|
+\end{eqnarray*}
 \begin{code}
 matrot :: Eq a => [[a]] -> [a]
 matrot [] = []

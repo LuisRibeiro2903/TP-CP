@@ -270,10 +270,10 @@
 
 %====== DEFINIR GRUPO E ELEMENTOS =============================================%
 
-\group{G99}
-\studentA{100714}{Diogo }
-\studentB{100608}{Luís }
-\studentC{100647}{Martim }
+\group{G15}
+\studentA{100714}{Diogo Santos}
+\studentB{100608}{Luís Ribeiro}
+\studentC{100647}{Martim Félix}
 
 %==============================================================================%
 
@@ -892,6 +892,60 @@ que sejam necessárias.
 
 \subsection*{Problema 1}
 
+\begin{eqnarray*}
+\xymatrix@C=3cm{
+    (\ensuremath{\Conid{A}}^*)^*
+           \ar[d]_-{\ensuremath{\Varid{lasts}}}
+           \ar@/^/[r]^-{\ensuremath{\mathsf{out}}}
+&
+    \ensuremath{\mathrm{1}} + \ensuremath{\Conid{A}}^* \ensuremath{\times(\Conid{A}}^*)^*
+           \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\Varid{lasts}}}
+           \ar@/^/[l]^-{\ensuremath{\mathsf{in}}}
+\\
+     \ensuremath{\Conid{A}}^*
+&
+     \ensuremath{\mathrm{1}\mathbin{+}\Conid{A}}^*\ensuremath{\times\Conid{A}}^* 
+           \ar[l]^-{\ensuremath{\alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{last}\times\Varid{id})}}}
+}
+\start
+lasts = \ensuremath{\llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{last}\times\Varid{id})}\,\rrparenthesis}
+\end{eqnarray*}
+\begin{eqnarray*}
+\xymatrix@C=3cm{
+    (\ensuremath{\Conid{A}}^*)^*
+           \ar[d]_-{\ensuremath{\Varid{myinits}}}
+           \ar@/^/[r]^-{\ensuremath{\mathsf{out}}}
+&
+    \ensuremath{\mathrm{1}} + \ensuremath{\Conid{A}}^* \ensuremath{\times(\Conid{A}}^*)^*
+           \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\Varid{myinits}}}
+           \ar@/^/[l]^-{\ensuremath{\mathsf{in}}}
+\\
+     \ensuremath{\Conid{A}}^*
+&
+     \ensuremath{\mathrm{1}\mathbin{+}\Conid{A}}^*\ensuremath{\times\Conid{A}}^* 
+           \ar[l]^-{\ensuremath{\alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{init}\times\Varid{id})}}}
+}
+\start
+myinits = \ensuremath{\llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{init}\times\Varid{id})}\,\rrparenthesis}
+\end{eqnarray*}
+\begin{eqnarray*}
+\xymatrix@C=3cm{
+    (\ensuremath{\Conid{A}}^*)^*
+           \ar[d]_-{\ensuremath{\Varid{aux}}}
+           \ar@/^/[r]^-{\ensuremath{\mathsf{out}}}
+&
+    \ensuremath{\mathrm{1}} + \ensuremath{\Conid{A}}^* \ensuremath{\times(\Conid{A}}^*)^*
+           \ar[d]^{\ensuremath{\Varid{id}\mathbin{+}\Varid{id}\times\Varid{aux}}}
+           \ar@/^/[l]^-{\ensuremath{\mathsf{in}}}
+\\
+     \ensuremath{\Conid{A}}^*
+&
+     \ensuremath{\mathrm{1}\mathbin{+}\Conid{A}}^*\ensuremath{\times\Conid{A}}^* 
+           \ar[l]^-{\ensuremath{\alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{reverse}\times\Varid{id})}}}
+}
+\start
+deepreverse = \ensuremath{\Varid{reverse}\comp \llparenthesis\, \alt{\Varid{nil}}{\Varid{cons}\comp (\Varid{reverse}\times\Varid{id})}\,\rrparenthesis}
+\end{eqnarray*}
 \begin{hscode}\SaveRestoreHook
 \column{B}{@{}>{\hspre}l<{\hspost}@{}}%
 \column{5}{@{}>{\hspre}l<{\hspost}@{}}%
